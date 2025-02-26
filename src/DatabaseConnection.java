@@ -3,18 +3,21 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DatabaseConnection {
-    private static final String URL = "jdbc:postgresql://localhost:5432/todo_app";
-    private static final String USER = "postgres";
-    private static final String PASSWORD = "fIc258wan";
 
-    public static Connection connect() throws SQLException {
+    public static Connection connect() {
+        Connection conn = null;
         try {
             Class.forName("org.postgresql.Driver");
+            System.out.println("PostgreSQL JDBC Driver Registered!");
+            conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/todo_app", "postgres", "fIc258wan");
         } catch (ClassNotFoundException e) {
             System.out.println("Driver not found!");
             e.printStackTrace();
+        } catch (SQLException e) {
+            System.out.println("Failed to connect to the database!");
+            e.printStackTrace();
         }
-        return DriverManager.getConnection(URL, USER, PASSWORD);
+        return conn;
     }
 
     public static void main(String[] args) {
@@ -23,10 +26,12 @@ public class DatabaseConnection {
             if (connection != null) {
                 System.out.println("Connected to the database!");
                 connection.close();
-            } 
+            }  else {
+                  System.out.println("Failed to make connection!");  
+            }
         } catch (SQLException e) {
-                System.out.println("Failed to make connection!");
-                e.printStackTrace();
+            System.out.println("Failed to make connection!");
+            e.printStackTrace();
         }
     }
 }

@@ -1,32 +1,62 @@
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
-    
     public static void main(String[] args) {
-        
-        try {
-            TaskDAO.addTask("Finish Java project", "Complete CRUD function", "2025-02-27", "Pending");
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            System.out.println("Please choose an option:");
+            System.out.println("1. Add Task");
+            System.out.println("2. View Tasks");
+            System.out.println("3. Update Task");
+            System.out.println("4. Delete Task");
+            System.out.println("5. Exit");
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // Consume the newline character
 
-            System.out.println("\nTasks List:");
-            List<Task> tasks = TaskDAO.getTasks();
-            for (Task task : tasks) {
-                System.out.println("ID: "+ task.getID() + ", Name: " + task.getName() + ", Status: " + task.getStatus());
-            }
-            
-            if(tasks.size() > 0) {
-                TaskDAO.updateTask(tasks.get(0).getID(), "Finish Java project - Updated", "In Progress");
-            } else {
-                System.out.println("No tasks to update!");
-            }
+            switch (choice) {
+                case 1:
+                    System.out.println("Enter Task Name:");
+                    String name = scanner.nextLine();
+                    System.out.println("Enter Task Description:");
+                    String description = scanner.nextLine();
+                    System.out.println("Enter Due Date (YYYY-MM-DD):");
+                    String dueDate = scanner.nextLine();
+                    System.out.println("Enter Task Status:");
+                    String status = scanner.nextLine();
 
-            if(tasks.size() > 0) {
-                TaskDAO.deleteTask(tasks.get(0).getID());
-            } else {
-                System.out.println("No tasks to delete!");
+                    TaskDAO.addTask(name, description, dueDate, status);
+                    break;
+
+                case 2:
+                    TaskDAO.getTasks().forEach(System.out::println);
+                    break;
+
+                case 3:
+                    System.out.println("Enter Task ID to update:");
+                    int taskId = scanner.nextInt();
+                    scanner.nextLine(); // Consume the newline character
+                    System.out.println("Enter new Task Name:");
+                    String newName = scanner.nextLine();
+                    System.out.println("Enter new Task Status:");
+                    String newStatus = scanner.nextLine();
+                    TaskDAO.updateTask(taskId, newName, newStatus);
+                    break;
+
+                case 4:
+                    System.out.println("Enter Task ID to delete:");
+                    int deleteId = scanner.nextInt();
+                    TaskDAO.deleteTask(deleteId);
+                    break;
+
+                case 5:
+                    System.out.println("Exiting...");
+                    scanner.close();
+                    return;
+
+                default:
+                    System.out.println("Invalid choice. Please try again.");
             }
-            
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 }

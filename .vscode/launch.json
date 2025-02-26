@@ -1,0 +1,23 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "DatabaseConnection",
+            "request": "launch",
+            "mainClass": "DatabaseConnection",
+            "projectName": "todo-list_607d4e20"
+        },
+        {
+            "type": "java",
+            "request": "launch",
+            "name": "Launch Main",
+            "mainClass": "Main",
+            "classPaths": [
+                "${workspaceFolder}/bin",
+                "C:\\Users\\kunfu\\OneDrive\\Documents\\GitHub\\todo-list\\lib\\postgresql-42.5.0.jar"
+            ]
+        }
+    ]
+  }
+  

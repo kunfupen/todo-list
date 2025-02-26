@@ -31,8 +31,10 @@ public class TaskDAO {
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
+                String description = rs.getString("description");
+                String dueDate = rs.getString("due_date");
                 String status = rs.getString("status");
-                tasks.add(new Task(id, name, status));
+                tasks.add(new Task(id, name, description, dueDate, status));
             }
         } catch (SQLException e) {
             System.out.println("Failed to get tasks!");
