@@ -3,6 +3,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "GUI",
+            "request": "launch",
+            "mainClass": "GUI",
+            "projectName": "todo-list_607d4e20"
+        },
+        {
+            "type": "java",
             "name": "DatabaseConnection",
             "request": "launch",
             "mainClass": "DatabaseConnection",

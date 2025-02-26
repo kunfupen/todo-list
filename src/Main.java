@@ -1,4 +1,3 @@
-import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -12,7 +11,7 @@ public class Main {
             System.out.println("4. Delete Task");
             System.out.println("5. Exit");
             int choice = scanner.nextInt();
-            scanner.nextLine(); // Consume the newline character
+            scanner.nextLine(); 
 
             switch (choice) {
                 case 1:
@@ -35,7 +34,7 @@ public class Main {
                 case 3:
                     System.out.println("Enter Task ID to update:");
                     int taskId = scanner.nextInt();
-                    scanner.nextLine(); // Consume the newline character
+                    scanner.nextLine(); 
                     System.out.println("Enter new Task Name:");
                     String newName = scanner.nextLine();
                     System.out.println("Enter new Task Status:");
