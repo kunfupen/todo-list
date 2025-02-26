@@ -12,9 +12,9 @@ The To-Do List Application is a simple Java-based program that allows users to m
 - **Delete Task**: Remove a task from the database.
 
 ## Technologies Used
-**Java**: Backend programming language.
-**PostgreSQL**: Relational database management system for storing tasks.
-**JDBC**: Java Database Connectivity to connect and interact with the PostgreSQL database.
+- **Java**: Backend programming language.
+- **PostgreSQL**: Relational database management system for storing tasks.
+- **JDBC**: Java Database Connectivity to connect and interact with the PostgreSQL database.
 
 ## Setup
 
