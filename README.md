@@ -2,7 +2,7 @@
 # Work In Progress
 
 ## Overview
-I am learning sql with java to create a db.
+I am learning how to use sql with java to create a db.
 The To-Do List Application is a simple Java-based program that allows users to manage tasks with basic CRUD (Create, Read, Update, Delete) functionality. It uses PostgreSQL as the backend database to store tasks and provides an interactive user interface for managing them.
 
 ## Features
