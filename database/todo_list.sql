@@ -1,18 +1,31 @@
-CREATE DATABASE todo_list;
+-- Creates the database if it does not exist
+DO
+$$
+BEGIN
+    IF NOT EXISTS (SELECT 1 FROM pg_database WHERE datname = 'todo_list') THEN
+        PERFORM dblink_exec('dbname=postgres', 'CREATE DATABASE todo_list');
+    END IF;
+END
+$$;
 
+-- Connect to the database
 \c todo_list;
 
-CREATE TABLE tasks (
-    id SERIAL PRIMARY KEY,
-    title VARCHAR(255) NOT NULL,
-    description TEXT,
-    due_date DATE,
-    status VARCHAR(50) DEFAULT 'Pending'
-);
+-- Create the table if it does not exist
+DO
+$$
+BEGIN
+    IF NOT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'tasks') THEN
+        CREATE TABLE tasks (
+            id SERIAL PRIMARY KEY,
+            name VARCHAR(255) NOT NULL,
+            description TEXT,
+            due_date DATE,
+            status VARCHAR(50) DEFAULT 'Pending'
+        );
+    END IF;
+END
+$$;
 
- 
-INSERT INTO tasks (title, description, due_date, status)
-VALUES 
-('Finish Java project', 'Complete CRUD function', '2025-02-27', 'In Progress'),
-('Study for interview', 'Review Java + SQL Leetcode + Understand Resume', '2025-02-28', 'Pending'),
-('SOCI HW', 'Start SOCI HW', '2025-02-28', 'Pending');
+-- Truncate the table to remove all existing tasks
+TRUNCATE TABLE tasks;

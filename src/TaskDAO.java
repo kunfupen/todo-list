@@ -11,7 +11,7 @@ public class TaskDAO {
             PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, name);
             stmt.setString(2, description);
-            stmt.setString(3, dueDate);
+            stmt.setDate(3, java.sql.Date.valueOf(dueDate));
             stmt.setString(4, status);
             stmt.executeUpdate();
             System.out.println("Task added successfully!");
@@ -32,9 +32,9 @@ public class TaskDAO {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
                 String description = rs.getString("description");
-                String dueDate = rs.getString("due_date");
+                Date dueDate = rs.getDate("due_date");
                 String status = rs.getString("status");
-                tasks.add(new Task(id, name, description, dueDate, status));
+                tasks.add(new Task(id, name, description, dueDate.toString(), status));
             }
         } catch (SQLException e) {
             System.out.println("Failed to get tasks!");

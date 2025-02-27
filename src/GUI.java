@@ -1,8 +1,6 @@
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.List;
 
 public class GUI {
@@ -51,20 +49,20 @@ public class GUI {
         JButton deleteButton = new JButton("Delete Task");
         JButton refreshButton = new JButton("Refresh");
 
-        inputPanel.add(addButton);
-        inputPanel.add(updateButton);
-        inputPanel.add(deleteButton);
-        inputPanel.add(refreshButton);
+        buttonPanel.add(addButton);
+        buttonPanel.add(updateButton);
+        buttonPanel.add(deleteButton);
+        buttonPanel.add(refreshButton);
 
-        frame.add(inputPanel, BorderLayout.SOUTH);
+        frame.add(buttonPanel, BorderLayout.SOUTH);
 
         // Event Listeners
-        addButton.addActionListener(e -> {
+        addButton.addActionListener(_ -> {
             TaskDAO.addTask(nameField.getText(), descriptionField.getText(), dueDateField.getText(), statusField.getText());
             refreshTable();
         });
 
-        updateButton.addActionListener(e -> {
+        updateButton.addActionListener(_ -> {
             try { 
                 int id = Integer.parseInt(idField.getText());
                 TaskDAO.updateTask(id, nameField.getText(), statusField.getText());
@@ -74,7 +72,7 @@ public class GUI {
             }
         });
 
-        deleteButton.addActionListener(e -> {
+        deleteButton.addActionListener(_ -> {
             try {
                 int id = Integer.parseInt(idField.getText());
                 TaskDAO.deleteTask(id);
@@ -84,10 +82,10 @@ public class GUI {
         }
         });
 
-        refreshButton.addActionListener(e -> refreshTable());
+        refreshButton.addActionListener(_ -> refreshTable());
         
-        table.getSelectionModel().addListSelectionListener(event -> {
-            if (!event.getValueIsAdjusting() && table.getSelectedRow() != -1) {
+        table.getSelectionModel().addListSelectionListener(listSelectionEvent -> {
+            if (!listSelectionEvent.getValueIsAdjusting() && table.getSelectedRow() != -1) {
                 idField.setText(table.getValueAt(table.getSelectedRow(), 0).toString());
                 nameField.setText(table.getValueAt(table.getSelectedRow(), 1).toString());
                 descriptionField.setText(table.getValueAt(table.getSelectedRow(), 2).toString());
