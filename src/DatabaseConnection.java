@@ -9,7 +9,7 @@ public class DatabaseConnection {
         try {
             Class.forName("org.postgresql.Driver");
             System.out.println("PostgreSQL JDBC Driver Registered!");
-            conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/todo_list", "postgres", "fIc258wan");
+            //conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
         } catch (ClassNotFoundException e) {
             System.out.println("Driver not found!");
             e.printStackTrace();
