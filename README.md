@@ -1,5 +1,4 @@
 # To-DO List Application
-# Work In Progress
 
 Overview
 I am learning how to use sql with java to create a db.
@@ -20,9 +19,9 @@ Setup
 
 Prerequisties
 Before running the application, make sure you have the following installed:
-- **Java 17+**: [Download Java](https://www.oracle.com/java/technologies/javase-jdk17-downloads.html)
-- **PostgreSQL**: [Download PostgreSQL](https://www.postgresql.org/download/)
-- **Maven/Gradle** (Optional, depending on your build system)
+- **Java 17+**
+- **PostgreSQL**
+- **Maven/Gradle** (Optional)
 
 Steps to Set Up
 
