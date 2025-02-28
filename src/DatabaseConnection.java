@@ -2,7 +2,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-
 public class DatabaseConnection {
 
     public static Connection connect() {
@@ -10,7 +9,7 @@ public class DatabaseConnection {
         try {
             Class.forName("org.postgresql.Driver");
             System.out.println("PostgreSQL JDBC Driver Registered!");
-            conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/todo_list", "postgres", "fIc258wan");
+            //conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
         } catch (ClassNotFoundException e) {
             System.out.println("Driver not found!");
             e.printStackTrace();
@@ -36,4 +35,3 @@ public class DatabaseConnection {
         }
     }
 }
-
